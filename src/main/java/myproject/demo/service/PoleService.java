@@ -14,8 +14,7 @@ public class PoleService {
         Etablissemment etablissemment=etablissemmentService.findByPole_Intitule(pole.getIntitule());
         if(findByintitule(pole.getIntitule())!=null)
             return -1;
-        if(pole==null)
-            return-2;
+
         else
             pole.setEtablissemment(etablissemment);
           poleDao.save(pole);
@@ -23,8 +22,8 @@ public class PoleService {
         return 1;
     }
 
-     public Pole findByServices_Intitule(String intitule){
-        return poleDao.findByServices_Intitule(intitule);
+     public Pole findByServhopital_Intitule(String intitule){
+        return poleDao.findByServhopital_Intitule(intitule);
      }
 
 

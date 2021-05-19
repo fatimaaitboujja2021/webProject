@@ -1,24 +1,44 @@
 package myproject.demo.ws;
 
+import myproject.demo.bean.Fonctionnaire;
 import myproject.demo.bean.ListeGarde;
 import myproject.demo.service.ListeGardeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
  @RestController
-@RequestMapping("/CHU/liste")
+@RequestMapping("/Chu/listeGardeWs")
 
 public class ListeGardeWs {
 
 @Autowired
 private ListeGardeService listeGardeService;
+     @GetMapping("/minetmaxdate/{d}/{a}")
+     public List<ListeGarde> findBydateminetmax(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date d, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date a) {
+         return listeGardeService.findBydateminetmax(d, a);
+     }
+
+     @PutMapping("/")
+     public ListeGarde update(@RequestBody ListeGarde listeGarde) {
+         return listeGardeService.update(listeGarde);
+     }
+     @PostMapping("/delete-multiple-by-reference")
+     public int deleteByReference(@RequestBody List<ListeGarde> listeGardes) {
+         return listeGardeService.deleteByRef(listeGardes);
+     }
+
+     @GetMapping("/")
+     public List<ListeGarde> findAll() {
+         return listeGardeService.findAll();
+     }
     @PostMapping("/")
     public  int save(@RequestBody ListeGarde listeGarde){
       return listeGardeService.save(listeGarde);
     }
-    @DeleteMapping("/refdeListe/{refdeListe}")
+    @DeleteMapping("/reference/{refdeListe}")
     public int deleteByRef(@PathVariable String refdeListe){
         return listeGardeService.deleteByRef(refdeListe);
     }

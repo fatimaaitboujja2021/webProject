@@ -10,6 +10,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/CHU/Fonctionnaire")
 public class ComptebancaireWs {
+//    @GetMapping("/hi/{nCompte}/{nom}")
+//
+//    public Comptebancaire findBynCompte_nom(@PathVariable Long nCompte,@PathVariable String nom){
+//
+//        return comptebancaireService.findBynCompte_nom(nCompte,nom);
+//    }
+
     @PostMapping("/")
     public int save(@RequestBody Comptebancaire comptebancaire) {
         return  comptebancaireService.save(comptebancaire);

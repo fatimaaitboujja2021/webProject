@@ -13,15 +13,28 @@ public class LaGarde {
     private Long id;
     private String ref;
 
-    private String Code ;
+    private String code ;
 
-    private String Intitule ;
-    private String TypeGarde ;
+    private String intitule ;
+    private String typeGarde ;
     private int nbrHeursdeGarde ;
+
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "garde")
+    private List<ListeGarde> listeGarde;
 
 //    @OneToOne
 //    private Fonctionnaire fonctionnaire;
 
+
+    public List<ListeGarde> getListeGarde() {
+        return listeGarde;
+    }
+
+    public void setListeGarde(List<ListeGarde> listeGarde) {
+        this.listeGarde = listeGarde;
+    }
 
     public Long getId() {
         return id;
@@ -31,28 +44,36 @@ public class LaGarde {
         this.id = id;
     }
 
+    public String getRef() {
+        return ref;
+    }
+
+    public void setRef(String ref) {
+        this.ref = ref;
+    }
+
     public String getCode() {
-        return Code;
+        return code;
     }
 
     public void setCode(String code) {
-        Code = code;
+        this.code = code;
     }
 
     public String getIntitule() {
-        return Intitule;
+        return intitule;
     }
 
     public void setIntitule(String intitule) {
-        Intitule = intitule;
+        this.intitule = intitule;
     }
 
     public String getTypeGarde() {
-        return TypeGarde;
+        return typeGarde;
     }
 
     public void setTypeGarde(String typeGarde) {
-        TypeGarde = typeGarde;
+        this.typeGarde = typeGarde;
     }
 
     public int getNbrHeursdeGarde() {

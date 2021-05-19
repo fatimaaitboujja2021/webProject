@@ -11,5 +11,5 @@ public interface PoleDao extends JpaRepository<Pole,Long> {
    // Pole findByEtablissemmentintitule(String intitule);
     int deleteByintitule(String intitule);
     //int deleteByEtablissemmentintitule(String intitule);
-    Pole findByServices_Intitule(String intitule);
+    Pole findByServhopital_Intitule(String intitule);
 }

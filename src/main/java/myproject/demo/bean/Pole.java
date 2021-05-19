@@ -20,7 +20,7 @@ public class Pole {
     private Etablissemment etablissemment;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "pole")
-    private List<Services> services;
+    private List<Servhopital> servhopital;
 
     public Long getId() {
         return id;
@@ -46,12 +46,12 @@ public class Pole {
         this.ref = ref;
     }
 
-    public List<Services> getServices() {
-        return services;
+    public List<Servhopital> getServhopital() {
+        return servhopital;
     }
 
-    public void setServices(List<Services> services) {
-        this.services = services;
+    public void setServhopital(List<Servhopital> servhopital) {
+        this.servhopital = servhopital;
     }
 
     public Etablissemment getEtablissemment() {

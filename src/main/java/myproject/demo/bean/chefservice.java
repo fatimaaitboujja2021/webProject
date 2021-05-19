@@ -7,22 +7,16 @@ import java.util.List;
 
 @Entity
 
-public class ChefService{
+public class chefservice {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String ref;
-    private String Email;
-    private String Password;
-    private String Matricule;
+    private String email;
+    private String password;
+    private String matricule;
 
-    public String getMatricule() {
-        return Matricule;
-    }
 
-    public void setMatricule(String matricule) {
-        Matricule = matricule;
-    }
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "chefService")
@@ -53,21 +47,30 @@ public class ChefService{
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
-//
+
+    public String getMatricule() {
+        return matricule;
+    }
+
+    public void setMatricule(String matricule) {
+        this.matricule = matricule;
+    }
+
+    //
 //    public List<Fonctionnaire> getFonctionnaire() {
 //        return fonctionnaire;
 //    }

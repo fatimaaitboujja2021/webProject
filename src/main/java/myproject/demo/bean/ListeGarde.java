@@ -1,6 +1,7 @@
 package myproject.demo.bean;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -19,12 +20,21 @@ private double dureDeGarde;
     //private double DureDabsence { get; set; }
     //private double DuredeRetard { get; set; }
     //private double DureDeRetard { get; set; }
+    @Temporal(TemporalType.DATE)
     private Date dateGarde ;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "listegarde")
-    private List<Fonctionnaire> fonctionnaire;
+    private String jourounuit;
+    @ManyToOne
+    private Fonctionnaire fonctionnaire;
     @ManyToOne
     private  LaGarde garde;
+
+    public String getJourounuit() {
+        return jourounuit;
+    }
+
+    public void setJourounuit(String jourounuit) {
+        this.jourounuit = jourounuit;
+    }
 
     public String getRef() {
         return ref;
@@ -58,11 +68,11 @@ private double dureDeGarde;
         this.dateGarde = dateGarde;
     }
 
-    public List<Fonctionnaire> getFonctionnaire() {
+    public Fonctionnaire getFonctionnaire() {
         return fonctionnaire;
     }
 
-    public void setFonctionnaire(List<Fonctionnaire> fonctionnaire) {
+    public void setFonctionnaire(Fonctionnaire fonctionnaire) {
         this.fonctionnaire = fonctionnaire;
     }
 

@@ -9,8 +9,9 @@ import java.util.List;
 public interface ComptebancaireDao extends JpaRepository<Comptebancaire,Long> {
 
     Comptebancaire findBynom(String nom);
-    Comptebancaire findBynCompte(Long nCompte);
-    List<Comptebancaire> findAll();
+//    Comptebancaire findBynCompte_nom(Long nCompte,String nom);
+     Comptebancaire findBynCompte(Long nCompte);
+     List<Comptebancaire> findAll();
     int deleteBynom(String banqueNom);
     int deleteBynCompte(Long nCompte);
     Comptebancaire findByRef(String ref);

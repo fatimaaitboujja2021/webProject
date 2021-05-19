@@ -19,6 +19,12 @@ public class ComptebancaireService {
         return 1;
     }
 
+//    public Comptebancaire findBynCompte_nom(Long nCompte,String nom){
+//
+//        return comptebancaireDao.findBynCompte_nom(nCompte,nom);
+//    }
+
+
 
     public Comptebancaire findByRef(String ref){
         return comptebancaireDao.findByRef(ref);

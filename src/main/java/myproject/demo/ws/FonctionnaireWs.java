@@ -9,12 +9,31 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/CHU/Fonctionnairews")
+@RequestMapping("/Chu/Fonctionnairews")
 public class FonctionnaireWs {
 
 
 @Autowired
 private FonctionnaireService fonctionnaireService;
+
+
+    @PutMapping("/")
+    public Fonctionnaire update(@RequestBody Fonctionnaire fonctionnaire) {
+        return fonctionnaireService.update(fonctionnaire);
+    }
+    @PostMapping("/delete-multiple-by-reference")
+    public int deleteByReference(@RequestBody List<Fonctionnaire> fonctionnaires) {
+        return fonctionnaireService.deleteByRef(fonctionnaires);
+    }
+    @GetMapping("/nomp/{nom}/{prenom}")
+    public Fonctionnaire findByNomAndPrenom(@PathVariable  String nom,@PathVariable  String prenom){
+        return fonctionnaireService.findByNomAndPrenom(nom,prenom);
+    }
+    @DeleteMapping("/reference/{reference}")
+    public int deleteByReference(@PathVariable String reference) {
+        return fonctionnaireService.deleteByRef(reference);
+    }
+
     @GetMapping("/ref/{ref}")
     public Fonctionnaire findByRef(@PathVariable String ref){
         return fonctionnaireService.findByRef(ref);
@@ -24,6 +43,10 @@ private FonctionnaireService fonctionnaireService;
 
     public int save (@RequestBody Fonctionnaire fonctionnaire){
        return fonctionnaireService.save(fonctionnaire);
+    }
+    @GetMapping("/")
+    public List<Fonctionnaire> findAll() {
+        return fonctionnaireService.findAll();
     }
     @GetMapping("/matriculeSub/{matriculeSub}")
 

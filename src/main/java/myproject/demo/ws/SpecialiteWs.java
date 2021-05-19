@@ -29,8 +29,8 @@ private SpecialiteService specialiteService;
     public int deleteByintitule(@PathVariable String intitule) {
         return specialiteService.deleteByintitule(intitule);
     }
-    @PostMapping("/")
 
+    @PostMapping("/")
     public int save(@RequestBody Specialite specialite) {
 
         if (specialite.getIntitule() == null)

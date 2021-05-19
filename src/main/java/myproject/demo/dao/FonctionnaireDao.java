@@ -17,4 +17,6 @@ public interface FonctionnaireDao extends JpaRepository<Fonctionnaire,Long> {
     List<Fonctionnaire> findBySpecialiteIntitule(String intitule);
     List<Fonctionnaire> findByvaliditerGarde(boolean validiterGarde);
     int deleteBymatriculeSub(String matricule);
+    Fonctionnaire findByNomAndPrenom(String nom,String prenom);
+int deleteByRef(String ref);
 }

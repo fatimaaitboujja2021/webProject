@@ -1,7 +1,10 @@
 package myproject.demo.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 
@@ -9,9 +12,9 @@ public class Fonctionnaire {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String ref;
     private String matriculeSub;
     private String matriculeSuperieur;
-
     private String nom;
     private String prenom;
     private String nationalite;
@@ -25,11 +28,9 @@ public class Fonctionnaire {
     private double nbEnfants;
     private String adresse;
     private String ville;
-
     private String nCIN;
     private Date dateExpirationCIN;
     private double nPassport;
-
     private Date dateExpirationPassport;
     private double nPermisSejours;
     private Date dateExpirationPermisSejours;
@@ -38,30 +39,81 @@ public class Fonctionnaire {
     private String regimeRetraite;
     private double nAfficiationMutuelle;
     private String organismeMutuelle;
-
     private Date dateRecrutement;
-
-
     private double indice;
     private String direction;
     private String division;
-
-
     private Date dateAffectation;
-
     private boolean validiterGarde;
 
 //ajouter le compte bancaire
     @ManyToOne
     private Conge conge;
     @ManyToOne
-    private ChefService chefService;
+    private chefservice chefService;
+@ManyToOne
+private  Servhopital servhopital;
 
-    public ChefService getChefService() {
+@ManyToOne
+private  Comptebancaire comptebancaire;
+//    @ManyToOne
+//private IndemniteAstreinte indemniteAstreinte;
+//    @ManyToOne
+//    private IndemniteGarde indemniteGarde;
+    @ManyToOne
+    private Specialite specialite;
+    @ManyToOne
+    private Fonction fonction;
+
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "fonctionnaire")
+    private List<ListeGarde> listeGarde;
+//    @ManyToOne
+//    private Nservices nservices;
+    @ManyToOne
+    private Grade grade;
+
+    @ManyToOne
+    private Echelon echelon;
+
+//    public IndemniteAstreinte getIndemniteAstreinte() {
+//        return indemniteAstreinte;
+//    }
+
+//    public void setIndemniteAstreinte(IndemniteAstreinte indemniteAstreinte) {
+//        this.indemniteAstreinte = indemniteAstreinte;
+//    }
+
+//    public IndemniteGarde getIndemniteGarde() {
+//        return indemniteGarde;
+//    }
+//
+//    public void setIndemniteGarde(IndemniteGarde indemniteGarde) {
+//        this.indemniteGarde = indemniteGarde;
+//    }
+
+    public List<ListeGarde> getListeGarde() {
+        return listeGarde;
+    }
+
+    public void setListeGarde(List<ListeGarde> listeGarde) {
+        this.listeGarde = listeGarde;
+    }
+
+    public Servhopital getServhopital() {
+        return servhopital;
+    }
+
+    public void setServhopital(Servhopital servhopital) {
+        this.servhopital = servhopital;
+    }
+
+    public chefservice getChefService() {
         return chefService;
     }
 
-    public void setChefService(ChefService chefService) {
+    public void setChefService(chefservice chefService) {
         this.chefService = chefService;
     }
 
@@ -72,31 +124,6 @@ public class Fonctionnaire {
     public void setRef(String ref) {
         this.ref = ref;
     }
-@ManyToOne
-private  Comptebancaire comptebancaire;
-    @ManyToOne
-private IndemniteAstreinte indemniteAstreinte;
-    @ManyToOne
-    private IndemniteGarde indemniteGarde;
-    @ManyToOne
-    private Specialite specialite;
-    @ManyToOne
-    private Fonction fonction;
-    @ManyToOne
-    private ListeGarde listegarde;
-    @ManyToOne
-    private Services services;
-    @ManyToOne
-    private Grade grade;
-    private String ref;
-
-    //    @ManyToOne
-//    private LaGarde laGarde;
-//    @ManyToOne
-//    private ChefService chefService;
-    @ManyToOne
-    private Echelon echelon;
-
     public Comptebancaire getComptebancaire() {
         return comptebancaire;
     }
@@ -393,13 +420,7 @@ private IndemniteAstreinte indemniteAstreinte;
         this.fonction = fonction;
     }
 
-    public ListeGarde getListegarde() {
-        return listegarde;
-    }
 
-    public void setListegarde(ListeGarde listegarde) {
-        this.listegarde = listegarde;
-    }
 
     public boolean isValiditerGarde() {
         return validiterGarde;
@@ -408,14 +429,14 @@ private IndemniteAstreinte indemniteAstreinte;
     public void setValiditerGarde(boolean validiterGarde) {
         this.validiterGarde = validiterGarde;
     }
-
-    public Services getServices() {
-        return services;
-    }
-
-    public void setServices(Services services) {
-        this.services = services;
-    }
+//
+//    public Nservices getNservices() {
+//        return nservices;
+//    }
+//
+//    public void setNservices(Nservices nservices) {
+//        this.nservices = nservices;
+//    }
 
     public Grade getGrade() {
         return grade;

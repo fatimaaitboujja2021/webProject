@@ -32,8 +32,8 @@ public class PoleWs {
 //    }
 
     @GetMapping("/sintitule/{sintitule}")
-    public Pole findByServices_Intitule(String sintitule){
-        return poleService.findByServices_Intitule(sintitule);
+    public Pole findByServhopital_Intitule(String sintitule){
+        return poleService.findByServhopital_Intitule(sintitule);
     }
     @DeleteMapping("/intitule/{intitule}")
 
