@@ -76,7 +76,16 @@ private  Comptebancaire comptebancaire;
 
     @ManyToOne
     private Echelon echelon;
+    @ManyToOne
+    private User user;
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 //    public IndemniteAstreinte getIndemniteAstreinte() {
 //        return indemniteAstreinte;
 //    }

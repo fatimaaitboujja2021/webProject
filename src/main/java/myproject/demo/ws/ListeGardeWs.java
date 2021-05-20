@@ -16,6 +16,11 @@ public class ListeGardeWs {
 
 @Autowired
 private ListeGardeService listeGardeService;
+     @GetMapping("/matriculesup/{matriculesup}")
+     public List<ListeGarde> findByFonctionnaire_MatriculeSuperieur(@PathVariable String matriculesup) {
+         return listeGardeService.findByFonctionnaire_MatriculeSuperieur(matriculesup);
+     }
+
      @GetMapping("/minetmaxdate/{d}/{a}")
      public List<ListeGarde> findBydateminetmax(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date d, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date a) {
          return listeGardeService.findBydateminetmax(d, a);

@@ -21,13 +21,15 @@ public class UserDetailsImpl implements UserDetails {
     private String email;
     private String lastname;
     private String firstname;
+    private String matricule;
+
 
     @JsonIgnore
     private String password;
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(Long id, String username, String email, String password,String firstname,String lastname,
+    public UserDetailsImpl(Long id, String username, String email, String password,String firstname,String lastname,String matricule,
                            Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.username = username;
@@ -36,6 +38,7 @@ public class UserDetailsImpl implements UserDetails {
         this.authorities = authorities;
         this.firstname=firstname;
         this.lastname=lastname;
+        this.matricule=matricule;
     }
 
     public static UserDetailsImpl build(User user) {
@@ -50,12 +53,21 @@ public class UserDetailsImpl implements UserDetails {
                 user.getPassword(),
                 user.getFirstname(),
                 user.getLastname(),
+                user.getMatricule(),
                 authorities);
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
+    }
+
+    public String getMatricule() {
+        return matricule;
+    }
+
+    public void setMatricule(String matricule) {
+        this.matricule = matricule;
     }
 
     public Long getId() {

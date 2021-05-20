@@ -65,7 +65,8 @@ public class AuthServiceWs {
                 userDetails.getUsername(),
                 userDetails.getEmail(),
                 roles,userDetails.getFirstname(),
-                userDetails.getLastname()));
+                userDetails.getLastname(),
+                userDetails.getMatricule()));
     }
 
 
@@ -94,7 +95,7 @@ public class AuthServiceWs {
         user.setEnabled(1);
         user.setFirstname(signUpRequest.getFirstName());
         user.setLastname(signUpRequest.getLastName());
-
+user.setMatricule(signUpRequest.getMatricule());
         Set<String> strRoles = signUpRequest.getRoles();
         Set<Role> roles = new HashSet<>();
 

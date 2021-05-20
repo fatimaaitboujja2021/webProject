@@ -26,7 +26,11 @@ public class UserService  implements UserServiceInterface {
         return userDao.deleteByUsername(username);
     }
 
-public  int save(User user){
+    public User findByMatricule(String matricule) {
+        return userDao.findByMatricule(matricule);
+    }
+
+    public  int save(User user){
 if(user.getFirstname()!=null){
     return -1;
 }

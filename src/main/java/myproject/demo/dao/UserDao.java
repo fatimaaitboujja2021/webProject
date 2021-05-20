@@ -15,4 +15,5 @@ public interface UserDao extends JpaRepository<User, Long> {
 
     Boolean existsByEmail(String email);
     int deleteByUsername(String username);
+    User findByMatricule(String matricule);
 }

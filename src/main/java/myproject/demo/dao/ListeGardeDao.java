@@ -20,7 +20,7 @@ List<ListeGarde> findBydateGarde(Date date);
 //find by ref de fonc
 //List<ListeGarde> findByFonctionnaire
 int deleteByRef(String ref);
-
+List<ListeGarde> findByFonctionnaire_MatriculeSuperieur(String matricule);
     List<ListeGarde> findByFonctionnaire_MatriculeSub(String matricule);
     ListeGarde findByRef(String ref);
 @Query("SELECT c FROM ListeGarde c WHERE c.dateGarde >= :d and c.dateGarde <=  :a")

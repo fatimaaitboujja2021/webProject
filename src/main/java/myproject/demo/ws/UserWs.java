@@ -15,6 +15,12 @@ import java.util.List;
 public class UserWs {
     @Autowired
     private UserService userService;
+    @GetMapping("/matricule/{matricule}")
+
+    public User findByMatricule(String matricule) {
+        return userService.findByMatricule(matricule);
+    }
+
     @DeleteMapping("/username/{username}")
     public int deleteByUsername(@PathVariable String username) {
         return userService.deleteByUsername(username);

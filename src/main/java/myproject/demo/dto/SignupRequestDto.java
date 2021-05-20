@@ -26,6 +26,15 @@ public class SignupRequestDto {
 
     @NotBlank
     private String lastName;
+    private String matricule;
+
+    public String getMatricule() {
+        return matricule;
+    }
+
+    public void setMatricule(String matricule) {
+        this.matricule = matricule;
+    }
 
     public String getUsername() {
         return username;

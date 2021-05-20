@@ -30,7 +30,7 @@ public class FonctionnaireService implements FonctionnaireServiceInterface {
     @Autowired
     private GradeService gradeService;
     @Autowired
-    private ChefServiceService chefServiceService;
+    private UserService userService;
     @Autowired
     private ComptebancaireService comptebancaireService;
 
@@ -47,7 +47,7 @@ public class FonctionnaireService implements FonctionnaireServiceInterface {
      //Nservices services = nservicesService.findByIntitule(fonctionnaire.getNservices().getIntitule());
         Servhopital servhopital=servhopitalService.findByintitule(fonctionnaire.getServhopital().getIntitule());
     Grade grade = gradeService.findBygradenom(fonctionnaire.getGrade().getGradenom());
-        chefservice chefService = chefServiceService.findByMatricule(fonctionnaire.getMatriculeSuperieur());
+        User user = userService.findByMatricule(fonctionnaire.getMatriculeSuperieur());
         Comptebancaire comptebancaire = comptebancaireService.findBynCompte(fonctionnaire.getComptebancaire().getnCompte());
         if (findBymatriculeSub(fonctionnaire.getMatriculeSub()) != null)
             return -1;
@@ -65,7 +65,7 @@ public class FonctionnaireService implements FonctionnaireServiceInterface {
         fonctionnaire.setConge(conge);
         fonctionnaire.setEchelon(echelon);
         fonctionnaire.setFonction(fonction);
-        fonctionnaire.setChefService(chefService);
+        fonctionnaire.setUser(user);
         fonctionnaire.setComptebancaire(comptebancaire);
         //fonctionnaire.setListeGarde(listeGarde);
         //fonctionnaire.setNservices(services);

@@ -10,10 +10,12 @@ public class JwtResponse {
     private String email;
     private String lastname;
     private String firstname;
+    private String matricule;
+
 
     private List<String> roles;
 
-    public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles,String firstname,String lastname) {
+    public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles,String firstname,String lastname,String matricule) {
         this.token = accessToken;
         this.id = id;
         this.username = username;
@@ -21,7 +23,15 @@ public class JwtResponse {
         this.roles = roles;
         this.firstname=firstname;
         this.lastname=lastname;
+this.matricule=matricule;
+    }
 
+    public String getMatricule() {
+        return matricule;
+    }
+
+    public void setMatricule(String matricule) {
+        this.matricule = matricule;
     }
 
     public String getLastname() {

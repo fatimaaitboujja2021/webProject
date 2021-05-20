@@ -22,7 +22,12 @@ private ListeGardeDao listeGardeDao;
 private FonctionnaireService fonctionnaireService;
 @Autowired
 private LaGardeService laGardeService;
-public  int save(ListeGarde listeGarde){
+
+    public List<ListeGarde> findByFonctionnaire_MatriculeSuperieur(String matriculesup) {
+        return listeGardeDao.findByFonctionnaire_MatriculeSuperieur(matriculesup);
+    }
+
+    public  int save(ListeGarde listeGarde){
    Fonctionnaire fonctionnaire=fonctionnaireService.findByNomAndPrenom(listeGarde.getFonctionnaire().getNom(),listeGarde.getFonctionnaire().getPrenom());
    //LaGarde laGarde=laGardeService.findByTypeGarde(listeGarde.getGarde().getRef());
     LaGarde laGarde=laGardeService.findByTypeGarde(listeGarde.getGarde().getTypeGarde());
