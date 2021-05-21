@@ -24,6 +24,8 @@ private double dureDeGarde;
     private Date dateGarde ;
     private String jourounuit;
     @ManyToOne
+//    @JsonProperty("fonctionnaire")
+//    @JsonProperty()
     private Fonctionnaire fonctionnaire;
     @ManyToOne
     private  LaGarde garde;

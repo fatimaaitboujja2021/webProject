@@ -25,4 +25,5 @@ List<ListeGarde> findByFonctionnaire_MatriculeSuperieur(String matricule);
     ListeGarde findByRef(String ref);
 @Query("SELECT c FROM ListeGarde c WHERE c.dateGarde >= :d and c.dateGarde <=  :a")
     List<ListeGarde> findBydateminetmax(@Param("d")Date d,@Param("a") Date a);
+
 }

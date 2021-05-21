@@ -39,8 +39,12 @@ private FonctionnaireService fonctionnaireService;
         return fonctionnaireService.findByRef(ref);
     }
 
-    @PostMapping("/")
+    @GetMapping("/d/{d}")
+    public List<String> findBynom(@PathVariable Object d) {
+        return fonctionnaireService.findBynom(d);
+    }
 
+    @PostMapping("/")
     public int save (@RequestBody Fonctionnaire fonctionnaire){
        return fonctionnaireService.save(fonctionnaire);
     }

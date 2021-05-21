@@ -5,6 +5,7 @@ import myproject.demo.bean.*;
 import myproject.demo.dao.FonctionnaireDao;
 import myproject.demo.service.facade.FonctionnaireServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -110,6 +111,9 @@ public class FonctionnaireService implements FonctionnaireServiceInterface {
     public int deleteByRef(String ref){
         return fonctionnaireDao.deleteByRef(ref);
     }
+    public List<String> findBynom( Object d){
+        return fonctionnaireDao.findBynom(d);
+    };
 
 
 
