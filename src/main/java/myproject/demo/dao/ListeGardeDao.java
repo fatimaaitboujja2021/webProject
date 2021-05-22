@@ -23,7 +23,7 @@ int deleteByRef(String ref);
 List<ListeGarde> findByFonctionnaire_MatriculeSuperieur(String matricule);
     List<ListeGarde> findByFonctionnaire_MatriculeSub(String matricule);
     ListeGarde findByRef(String ref);
-@Query("SELECT c FROM ListeGarde c WHERE c.dateGarde >= :d and c.dateGarde <=  :a")
-    List<ListeGarde> findBydateminetmax(@Param("d")Date d,@Param("a") Date a);
+@Query("SELECT c FROM ListeGarde c WHERE c.fonctionnaire.matriculeSuperieur LIKE %:n% and c.dateGarde >= :d and c.dateGarde <=  :a")
+    List<ListeGarde> findBydateminetmax(@Param("n") String n,@Param("d")Date d,@Param("a") Date a);
 
 }

@@ -37,6 +37,8 @@ private LaGardeService laGardeService;
 //        return -2;
 //    }
     else
+        listeGarde.setStatue("present(e)");
+    listeGarde.setRaisondabsence("");
         listeGarde.setGarde(laGarde);
       listeGarde.setFonctionnaire(fonctionnaire);
         //Fonctionnaire fonctionnaire=fi
@@ -44,15 +46,7 @@ private LaGardeService laGardeService;
 
     return 1;
 }
-    public int save3( List<ListeGarde> listeGardes) {
-        for (ListeGarde l : listeGardes) {
-           // magasin.setRue(rue);
-            Fonctionnaire p = fonctionnaireService.findByRef(l.getFonctionnaire().getRef());
-            l.setFonctionnaire(p);
-            listeGardeDao.save(l);
-        }
-        return 1;
-    }
+
 @Transactional
     public int deleteByRef(String refdeListe){
     return listeGardeDao.deleteByRef(refdeListe);
@@ -75,8 +69,8 @@ public List<ListeGarde> findBydureDeGarde(int duree){
     }
 
 
-    public List<ListeGarde> findBydateminetmax(Date d, Date a) {
-        return listeGardeDao.findBydateminetmax(d, a);
+    public List<ListeGarde> findBydateminetmax(String n,Date d, Date a) {
+        return listeGardeDao.findBydateminetmax(n,d,a);
     }
 
     @Override
@@ -94,7 +88,15 @@ public List<ListeGarde> findBydureDeGarde(int duree){
         return res;
     }
 
+public int saveMultiple(List<ListeGarde> listeGardes){
 
+      int res=0;
+      for(int i = 0; i < listeGardes.size(); i++){
+          res+=save(listeGardes.get(i));
+      }
+    return res;
+
+}
 
     public List<ListeGarde> findAll() {
         return listeGardeDao.findAll();

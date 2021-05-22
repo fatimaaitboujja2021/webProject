@@ -17,18 +17,36 @@ public class ListeGarde {
 private double dureDeGarde;
     //private double NbrDabsence { get; set; }
 
+    public String getRaisondabsence() {
+        return raisondabsence;
+    }
+
+    public void setRaisondabsence(String raisondabsence) {
+        this.raisondabsence = raisondabsence;
+    }
+
     //private double DureDabsence { get; set; }
     //private double DuredeRetard { get; set; }
     //private double DureDeRetard { get; set; }
     @Temporal(TemporalType.DATE)
     private Date dateGarde ;
     private String jourounuit;
+    private String statue;
+    private String raisondabsence;
     @ManyToOne
 //    @JsonProperty("fonctionnaire")
 //    @JsonProperty()
     private Fonctionnaire fonctionnaire;
     @ManyToOne
     private  LaGarde garde;
+
+    public String getStatue() {
+        return statue;
+    }
+
+    public void setStatue(String statue) {
+        this.statue = statue;
+    }
 
     public String getJourounuit() {
         return jourounuit;

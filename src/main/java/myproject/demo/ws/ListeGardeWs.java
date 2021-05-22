@@ -21,9 +21,9 @@ private ListeGardeService listeGardeService;
          return listeGardeService.findByFonctionnaire_MatriculeSuperieur(matriculesup);
      }
 
-     @GetMapping("/minetmaxdate/{d}/{a}")
-     public List<ListeGarde> findBydateminetmax(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date d, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date a) {
-         return listeGardeService.findBydateminetmax(d, a);
+     @GetMapping("/minetmaxdate/{n}/{d}/{a}")
+     public List<ListeGarde> findBydateminetmax(@PathVariable String n,@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date d, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date a) {
+         return listeGardeService.findBydateminetmax(n,d,a);
      }
 
      @PutMapping("/")
@@ -33,6 +33,11 @@ private ListeGardeService listeGardeService;
      @PostMapping("/delete-multiple-by-reference")
      public int deleteByReference(@RequestBody List<ListeGarde> listeGardes) {
          return listeGardeService.deleteByRef(listeGardes);
+     }
+     @PostMapping("/savemultiple")
+
+     public int saveMultiple(@RequestBody List<ListeGarde> listeGardes) {
+         return listeGardeService.saveMultiple(listeGardes);
      }
 
      @GetMapping("/")
