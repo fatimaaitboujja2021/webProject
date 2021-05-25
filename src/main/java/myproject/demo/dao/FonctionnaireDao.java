@@ -26,4 +26,10 @@ int deleteByRef(String ref);
     @Query("SELECT c.nom FROM Fonctionnaire c WHERE c.nom LIKE %:d% ")
     List<String> findBynom(@Param("d") Object d);
 
+    @Query("SELECT count(c) FROM Fonctionnaire c WHERE c.conge.id IS NOT NULL")
+    int nombredefonc();
+
+
+
+
 }

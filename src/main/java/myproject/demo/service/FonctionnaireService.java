@@ -115,6 +115,9 @@ public class FonctionnaireService implements FonctionnaireServiceInterface {
         return fonctionnaireDao.findBynom(d);
     };
 
+   public int nombredefonc(){
+       return fonctionnaireDao.nombredefonc();
+   };
 
 
     @Override

@@ -8,6 +8,7 @@ import myproject.demo.service.facade.FonctionnaireServiceInterface;
 import myproject.demo.service.facade.ListeGardeServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -75,11 +76,24 @@ public List<ListeGarde> findBydureDeGarde(int duree){
 
     @Override
     public ListeGarde update(ListeGarde listeGarde) {
+        if(listeGarde.getStatue()=="present(e)")
+            listeGarde.setRaisondabsence("_");
         return listeGardeDao.save(listeGarde);
     }
 
+public int nombredefonc(String n){
+        return listeGardeDao.nombredefonc(n);
+}
 
-@Override    @Transactional
+    public int nombredefoncgarde(String n) {
+        return listeGardeDao.nombredefoncgarde(n);
+    }
+
+    public int nombredefoncstatue(String n) {
+        return listeGardeDao.nombredefoncstatue(n);
+    }
+
+    @Override    @Transactional
     public int deleteByRef(List<ListeGarde> listeGardes){
         int res=0;
         for (int i = 0; i < listeGardes.size(); i++) {

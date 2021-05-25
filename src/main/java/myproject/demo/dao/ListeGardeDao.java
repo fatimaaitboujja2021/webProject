@@ -25,5 +25,18 @@ List<ListeGarde> findByFonctionnaire_MatriculeSuperieur(String matricule);
     ListeGarde findByRef(String ref);
 @Query("SELECT c FROM ListeGarde c WHERE c.fonctionnaire.matriculeSuperieur LIKE %:n% and c.dateGarde >= :d and c.dateGarde <=  :a")
     List<ListeGarde> findBydateminetmax(@Param("n") String n,@Param("d")Date d,@Param("a") Date a);
+//    @Query("SELECT c FROM ListeGarde c WHERE c.statue LIKE %:n% and  c.dateGarde == ")
+//    List<ListeGarde> findByabsent(@Param("n") String n,@Param("d")String d,@Param("a") Date a);
+
+//    @Query("SELECT count(c) FROM ListeGarde c WHERE c.fonctionnaire.matriculeSuperieur LIKE %:n% and c.dateGarde >= :d and c.dateGarde <=  :a")
+//    List<ListeGarde> countabsence(@Param("n") String n,@Param("m") String m,@Param("d")Date d,@Param("a") Date a);
+@Query("SELECT count(c) FROM ListeGarde c WHERE c.jourounuit LIKE %:n%")
+int nombredefonc(@Param("n") String n);
+
+    @Query("SELECT count(c) FROM ListeGarde c WHERE c.garde.typeGarde LIKE %:n%")
+    int nombredefoncgarde(@Param("n") String n);
+
+    @Query("SELECT count(c) FROM ListeGarde c WHERE c.statue LIKE %:n%")
+    int nombredefoncstatue(@Param("n") String n);
 
 }

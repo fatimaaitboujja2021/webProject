@@ -33,6 +33,10 @@ private FonctionnaireService fonctionnaireService;
     public int deleteByReference(@PathVariable String reference) {
         return fonctionnaireService.deleteByRef(reference);
     }
+    @GetMapping("/r")
+    public int nombredefonc() {
+        return fonctionnaireService.nombredefonc();
+    }
 
     @GetMapping("/ref/{ref}")
     public Fonctionnaire findByRef(@PathVariable String ref){

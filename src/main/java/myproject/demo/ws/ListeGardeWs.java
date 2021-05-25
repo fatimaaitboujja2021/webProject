@@ -25,6 +25,18 @@ private ListeGardeService listeGardeService;
      public List<ListeGarde> findBydateminetmax(@PathVariable String n,@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date d, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date a) {
          return listeGardeService.findBydateminetmax(n,d,a);
      }
+     @GetMapping("/nombre/{n}")
+     public int nombredefonc(@PathVariable String n) {
+         return listeGardeService.nombredefonc(n);
+     }
+     @GetMapping("/typegarde/{n}")
+     public int nombredefoncgarde(@PathVariable String n) {
+         return listeGardeService.nombredefoncgarde(n);
+     }
+     @GetMapping("/statue/{n}")
+     public int nombredefoncstatue(@PathVariable String n) {
+         return listeGardeService.nombredefoncstatue(n);
+     }
 
      @PutMapping("/")
      public ListeGarde update(@RequestBody ListeGarde listeGarde) {
