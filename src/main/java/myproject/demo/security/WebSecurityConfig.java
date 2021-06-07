@@ -57,9 +57,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/api/test/**").permitAll()
+                .antMatchers("/api/todows/**").permitAll()
                 .antMatchers("/Chu/**").permitAll()
                 .antMatchers("/Chu/userWs/**").permitAll()
                 .antMatchers("/Chu/listeGardeWs/**").permitAll()
+                .antMatchers("/Chu/indemniteAstreinteWs/**").permitAll()
+                .antMatchers("/Chu/indemniteGardeWs/**").permitAll()
 //                .antMatchers("/swagger-ui.html#/").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .anyRequest().authenticated();

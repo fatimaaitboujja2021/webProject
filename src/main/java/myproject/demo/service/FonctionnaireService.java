@@ -40,7 +40,7 @@ public class FonctionnaireService implements FonctionnaireServiceInterface {
     String isvide="vide";
     Date isDate=new Date();
     public int save(Fonctionnaire fonctionnaire) {
-        Conge conge = congeService.findByRef(fonctionnaire.getConge().getRef());
+       // Conge conge = congeService.findByRef(fonctionnaire.getConge().getRef());
         Echelon echelon = echelonService.findByechelonnom(fonctionnaire.getEchelon().getEchelonnom());
         Fonction fonction = fonctionService.findByintitule(fonctionnaire.getFonction().getIntitule());
        // ListeGarde listeGarde = listeGardeService.findByRef(fonctionnaire.getListeGarde());
@@ -52,6 +52,9 @@ public class FonctionnaireService implements FonctionnaireServiceInterface {
         Comptebancaire comptebancaire = comptebancaireService.findBynCompte(fonctionnaire.getComptebancaire().getnCompte());
         if (findBymatriculeSub(fonctionnaire.getMatriculeSub()) != null)
             return -1;
+//        if(congeService.findByRef(fonctionnaire.getConge().getRef())==null){
+//            fonctionnaire.getConge().setRef();
+//        }
 //        if(conge==null) return -2;
 //        if(echelon==null) return -3;
 //        if(fonction==null) return -4;
@@ -63,7 +66,7 @@ public class FonctionnaireService implements FonctionnaireServiceInterface {
         else
             fonctionnaire.setServhopital(servhopital);
             fonctionnaire.setSpecialite(specialite);
-        fonctionnaire.setConge(conge);
+      //  fonctionnaire.setConge(conge);
         fonctionnaire.setEchelon(echelon);
         fonctionnaire.setFonction(fonction);
         fonctionnaire.setUser(user);
@@ -119,6 +122,10 @@ public class FonctionnaireService implements FonctionnaireServiceInterface {
        return fonctionnaireDao.nombredefonc();
    };
 
+
+    public Fonctionnaire findByListeGarde_Ref(String ref) {
+        return fonctionnaireDao.findByListeGarde_Ref(ref);
+    }
 
     @Override
     public Fonctionnaire update(Fonctionnaire fonctionnaire) {

@@ -1,0 +1,145 @@
+////////////////////////////Role
+INSERT INTO Roles(name) VALUES
+('ROLE_USER'),
+('ROLE_MANAGER'),
+('ROLE_ADMIN');
+
+
+
+
+
+///////////////////// tab specialite
+
+
+
+
+INSERT INTO specialite
+VALUES (1,'Anesthésie et réanimation', '12/12',386);
+INSERT INTO specialite
+VALUES (2,'Gynécologie obstétrique', '12/12',386);
+INSERT INTO specialite
+VALUES (3,'Chirurgie', '12/12',386);
+INSERT INTO specialite
+VALUES (4,'Urgences', '12/12',386);
+INSERT INTO specialite
+VALUES (5,'Cardiologie', '12/12',386);
+INSERT INTO specialite
+VALUES (6,'Gastrologie', '12/12',386);
+INSERT INTO specialite
+VALUES (7,'Pédiatrie', '12/12',386);
+INSERT INTO specialite
+VALUES (8,'Radiothérapie', '12/12',386);
+INSERT INTO specialite
+VALUES (9,'Réanimation médicale', '12/12',386);
+INSERT INTO specialite
+VALUES (10,'Oncologie médicale', '12/12',386);
+INSERT INTO specialite
+VALUES (11,'Radiologie', '12/12',386);
+INSERT INTO specialite
+VALUES (12,'ORL', '12/12',386);
+INSERT INTO specialite
+VALUES (13,'Hématologie', '12/12',386);
+  INSERT INTO specialite
+VALUES (14,'En fonction au service des urgences ', '12/36',276);
+
+INSERT INTO specialite
+VALUES (15,'En fonction aux hôpitaux ', '12/36',276);
+
+INSERT INTO specialite
+VALUES (16,'Sage femme ', '12/36',276);
+
+INSERT INTO specialite
+VALUES (17,'Infirmiers
+   ( IDEs et IAs)
+En fonction au service des urgences ', '12/36',140);
+
+INSERT INTO specialite
+VALUES (18,'Infirmiers
+   ( IDEs et IAs)
+En fonction aux hôpitaux ', '12/36',140);
+
+INSERT INTO specialite
+VALUES (19,'Infirmiers
+   ( IDEs et IAs)Sage femme ', '12/36',140);
+  INSERT INTO specialite
+VALUES (20,'Anesthésie et réanimation', '16.30/24',96);
+
+INSERT INTO specialite
+VALUES (21,'Chirurgie - Urgences', '16.30/24',96);
+
+INSERT INTO specialite
+VALUES (22,'Pédiatrie ', '16.30/24',96);
+
+INSERT INTO specialite
+VALUES (23,'Réanimation médicale ', '16.30/24',96);
+
+INSERT INTO specialite
+VALUES (24,'Hématologie ', '16.30/24',96);
+INSERT INTO specialite
+VALUES (25,'Psychiatrie ', '16.30/24',96);
+INSERT INTO specialite
+VALUES (26,'Pneumologie ', '16.30/24',96);
+
+INSERT INTO specialite
+VALUES (27,'Analyses biomédicales ', '16.30/24',96);
+
+
+  INSERT INTO specialite
+VALUES (28,'Gynécologie obstétrique
+', '16.30/24',96);
+
+INSERT INTO specialite
+VALUES (29,'Cardiologie –Gastrologie
+', '16.30/24',96);
+
+INSERT INTO specialite
+VALUES (30,'Radiothérapie ', '16.30/24',96);
+
+INSERT INTO specialite
+VALUES (31,'Oncologie médicale ', '16.30/24',96);
+
+INSERT INTO specialite
+VALUES (32,'ORL
+ ', '16.30/24',96);
+INSERT INTO specialite
+VALUES (33,'Urologie
+ ', '16.30/24',96);
+INSERT INTO specialite
+VALUES (34,'Neurologie
+ ', '16.30/24',96);
+
+INSERT INTO specialite
+VALUES (35,' Médecine interne
+', '16.30/24',96);
+
+
+
+INSERT INTO specialite
+VALUES (36,' Pharmacien(Pharmacie clinique)','16.30/24',96);
+
+
+INSERT INTO specialite
+VALUES (37,'Hôpitaux et maisons d’accouchement
+ ', '16.30/24',72);
+
+INSERT INTO specialite
+VALUES (38,'Toutes les spécialités
+ ', '16.30/24',72);
+
+
+INSERT INTO specialite
+VALUES (41,'Sage-femme', '16.30/24',69);
+
+INSERT INTO specialite
+VALUES (42,'Polyvalents en fonction aux services : chirurgie, anesthésie et réanimation ', '16.30/24',69);
+
+
+INSERT INTO specialite
+VALUES (39,'Techniciens de laboratoire', '16.30/24',69);
+
+
+INSERT INTO specialite
+VALUES (40,'Techniciens de radiologie
+', '16.30/24',69);
+
+

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -24,29 +24,32 @@ public class Fonctionnaire {
     private String genre;
     private String nom_Ar;
     private String prenom_Ar;
-    private Date dateNaissance;
+    private LocalDate dateNaissance;
     private String lieuNaissance;
     private String situationFamiliale;
-    private Date dateSituationFamiliale;
+    private LocalDate dateSituationFamiliale;
     private double nbEnfants;
     private String adresse;
     private String ville;
     private String nCIN;
-    private Date dateExpirationCIN;
+    private LocalDate dateExpirationCIN;
     private double nPassport;
-    private Date dateExpirationPassport;
+    @Column(name = "NumImmatriculationAmo")
+
+    private double noImmatriculationAmo;
+    private LocalDate dateExpirationPassport;
     private double nPermisSejours;
-    private Date dateExpirationPermisSejours;
+    private LocalDate dateExpirationPermisSejours;
     private String nOImmatriculationAmo;
     private double nRetraite;
     private String regimeRetraite;
     private double nAfficiationMutuelle;
     private String organismeMutuelle;
-    private Date dateRecrutement;
+    private LocalDate dateRecrutement;
     private double indice;
     private String direction;
     private String division;
-    private Date dateAffectation;
+    private LocalDate dateAffectation;
     private boolean validiterGarde;
 
 //ajouter le compte bancaire
@@ -70,7 +73,7 @@ private  Comptebancaire comptebancaire;
 
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "fonctionnaire")
+    @OneToMany(mappedBy = "fonctionnaire",cascade = CascadeType.ALL)
     private List<ListeGarde> listeGarde;
 //    @ManyToOne
 //    private Nservices nservices;
@@ -82,51 +85,13 @@ private  Comptebancaire comptebancaire;
     @ManyToOne
     private User user;
 
-    public User getUser() {
-        return user;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-//    public IndemniteAstreinte getIndemniteAstreinte() {
-//        return indemniteAstreinte;
-//    }
-
-//    public void setIndemniteAstreinte(IndemniteAstreinte indemniteAstreinte) {
-//        this.indemniteAstreinte = indemniteAstreinte;
-//    }
-
-//    public IndemniteGarde getIndemniteGarde() {
-//        return indemniteGarde;
-//    }
-//
-//    public void setIndemniteGarde(IndemniteGarde indemniteGarde) {
-//        this.indemniteGarde = indemniteGarde;
-//    }
-
-    public List<ListeGarde> getListeGarde() {
-        return listeGarde;
-    }
-
-    public void setListeGarde(List<ListeGarde> listeGarde) {
-        this.listeGarde = listeGarde;
-    }
-
-    public Servhopital getServhopital() {
-        return servhopital;
-    }
-
-    public void setServhopital(Servhopital servhopital) {
-        this.servhopital = servhopital;
-    }
-
-    public chefservice getChefService() {
-        return chefService;
-    }
-
-    public void setChefService(chefservice chefService) {
-        this.chefService = chefService;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getRef() {
@@ -135,21 +100,6 @@ private  Comptebancaire comptebancaire;
 
     public void setRef(String ref) {
         this.ref = ref;
-    }
-    public Comptebancaire getComptebancaire() {
-        return comptebancaire;
-    }
-
-    public void setComptebancaire(Comptebancaire comptebancaire) {
-        this.comptebancaire = comptebancaire;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getMatriculeSub() {
@@ -216,11 +166,11 @@ private  Comptebancaire comptebancaire;
         this.prenom_Ar = prenom_Ar;
     }
 
-    public Date getDateNaissance() {
+    public LocalDate getDateNaissance() {
         return dateNaissance;
     }
 
-    public void setDateNaissance(Date dateNaissance) {
+    public void setDateNaissance(LocalDate dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
 
@@ -240,11 +190,11 @@ private  Comptebancaire comptebancaire;
         this.situationFamiliale = situationFamiliale;
     }
 
-    public Date getDateSituationFamiliale() {
+    public LocalDate getDateSituationFamiliale() {
         return dateSituationFamiliale;
     }
 
-    public void setDateSituationFamiliale(Date dateSituationFamiliale) {
+    public void setDateSituationFamiliale(LocalDate dateSituationFamiliale) {
         this.dateSituationFamiliale = dateSituationFamiliale;
     }
 
@@ -280,11 +230,11 @@ private  Comptebancaire comptebancaire;
         this.nCIN = nCIN;
     }
 
-    public Date getDateExpirationCIN() {
+    public LocalDate getDateExpirationCIN() {
         return dateExpirationCIN;
     }
 
-    public void setDateExpirationCIN(Date dateExpirationCIN) {
+    public void setDateExpirationCIN(LocalDate dateExpirationCIN) {
         this.dateExpirationCIN = dateExpirationCIN;
     }
 
@@ -296,11 +246,11 @@ private  Comptebancaire comptebancaire;
         this.nPassport = nPassport;
     }
 
-    public Date getDateExpirationPassport() {
+    public LocalDate getDateExpirationPassport() {
         return dateExpirationPassport;
     }
 
-    public void setDateExpirationPassport(Date dateExpirationPassport) {
+    public void setDateExpirationPassport(LocalDate dateExpirationPassport) {
         this.dateExpirationPassport = dateExpirationPassport;
     }
 
@@ -312,11 +262,11 @@ private  Comptebancaire comptebancaire;
         this.nPermisSejours = nPermisSejours;
     }
 
-    public Date getDateExpirationPermisSejours() {
+    public LocalDate getDateExpirationPermisSejours() {
         return dateExpirationPermisSejours;
     }
 
-    public void setDateExpirationPermisSejours(Date dateExpirationPermisSejours) {
+    public void setDateExpirationPermisSejours(LocalDate dateExpirationPermisSejours) {
         this.dateExpirationPermisSejours = dateExpirationPermisSejours;
     }
 
@@ -360,11 +310,11 @@ private  Comptebancaire comptebancaire;
         this.organismeMutuelle = organismeMutuelle;
     }
 
-    public Date getDateRecrutement() {
+    public LocalDate getDateRecrutement() {
         return dateRecrutement;
     }
 
-    public void setDateRecrutement(Date dateRecrutement) {
+    public void setDateRecrutement(LocalDate dateRecrutement) {
         this.dateRecrutement = dateRecrutement;
     }
 
@@ -392,19 +342,19 @@ private  Comptebancaire comptebancaire;
         this.division = division;
     }
 
-    public Date getDateAffectation() {
+    public LocalDate getDateAffectation() {
         return dateAffectation;
     }
 
-    public void setDateAffectation(Date dateAffectation) {
+    public void setDateAffectation(LocalDate dateAffectation) {
         this.dateAffectation = dateAffectation;
     }
 
-    public boolean isValiditer_Garde() {
+    public boolean isValiditerGarde() {
         return validiterGarde;
     }
 
-    public void setValiditer_Garde(boolean validiterGarde) {
+    public void setValiditerGarde(boolean validiterGarde) {
         this.validiterGarde = validiterGarde;
     }
 
@@ -414,6 +364,30 @@ private  Comptebancaire comptebancaire;
 
     public void setConge(Conge conge) {
         this.conge = conge;
+    }
+
+    public chefservice getChefService() {
+        return chefService;
+    }
+
+    public void setChefService(chefservice chefService) {
+        this.chefService = chefService;
+    }
+
+    public Servhopital getServhopital() {
+        return servhopital;
+    }
+
+    public void setServhopital(Servhopital servhopital) {
+        this.servhopital = servhopital;
+    }
+
+    public Comptebancaire getComptebancaire() {
+        return comptebancaire;
+    }
+
+    public void setComptebancaire(Comptebancaire comptebancaire) {
+        this.comptebancaire = comptebancaire;
     }
 
     public Specialite getSpecialite() {
@@ -432,23 +406,13 @@ private  Comptebancaire comptebancaire;
         this.fonction = fonction;
     }
 
-
-
-    public boolean isValiditerGarde() {
-        return validiterGarde;
+    public List<ListeGarde> getListeGarde() {
+        return listeGarde;
     }
 
-    public void setValiditerGarde(boolean validiterGarde) {
-        this.validiterGarde = validiterGarde;
+    public void setListeGarde(List<ListeGarde> listeGarde) {
+        this.listeGarde = listeGarde;
     }
-//
-//    public Nservices getNservices() {
-//        return nservices;
-//    }
-//
-//    public void setNservices(Nservices nservices) {
-//        this.nservices = nservices;
-//    }
 
     public Grade getGrade() {
         return grade;
@@ -458,21 +422,19 @@ private  Comptebancaire comptebancaire;
         this.grade = grade;
     }
 
-   
-//
-//    public ChefService getChefService() {
-//        return chefService;
-//    }
-//
-//    public void setChefService(ChefService chefService) {
-//        this.chefService = chefService;
-//    }
-
     public Echelon getEchelon() {
         return echelon;
     }
 
     public void setEchelon(Echelon echelon) {
         this.echelon = echelon;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

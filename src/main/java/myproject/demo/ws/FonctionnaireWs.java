@@ -15,7 +15,10 @@ public class FonctionnaireWs {
 
 @Autowired
 private FonctionnaireService fonctionnaireService;
-
+    @GetMapping("/refgarde/{refgarde}")
+    public Fonctionnaire findByListeGarde_Ref(@PathVariable String refgarde) {
+        return fonctionnaireService.findByListeGarde_Ref(refgarde);
+    }
 
     @PutMapping("/")
     public Fonctionnaire update(@RequestBody Fonctionnaire fonctionnaire) {

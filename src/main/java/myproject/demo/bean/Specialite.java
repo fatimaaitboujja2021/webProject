@@ -13,10 +13,22 @@ public class Specialite {
     private Long id;
     public String intitule ;
     private String ref;
+    @Column(name = "montant", nullable = false)
 
+    private float montant;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "specialite")
     private List<Fonctionnaire> fonctionnaire;
+
+
+    public float getMontant() {
+        return montant;
+    }
+
+    public void setMontant(float montant) {
+        this.montant = montant;
+    }
+
     public Long getId() {
         return id;
     }

@@ -29,7 +29,7 @@ int deleteByRef(String ref);
     @Query("SELECT count(c) FROM Fonctionnaire c WHERE c.conge.id IS NOT NULL")
     int nombredefonc();
 
-
+Fonctionnaire findByListeGarde_Ref(String ref);
 
 
 }
