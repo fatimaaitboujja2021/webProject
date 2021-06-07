@@ -67,23 +67,23 @@ private ListeGardeService listeGardeService;
      public List<ListeGarde> findBydateminetmax(@PathVariable String n,@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate d, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate a,@PathVariable String t) {
          return listeGardeService.findBydateminetmax(n,d,a,t);
      }
-     @GetMapping("/nombre/{n}")
-     public int nombredefonc(@PathVariable String n) {
-         return listeGardeService.nombredefonc(n);
+     @GetMapping("/nombre/{n}/{matricule}")
+     public int nombredefonc(@PathVariable String n,@PathVariable String matricule) {
+         return listeGardeService.nombredefonc(n,matricule);
      }
-     @GetMapping("/joursFeries/{n}")
+     @GetMapping("/joursFeries/{n}/{matricule}")
 
      public String joursFeries(@PathVariable   ListeGarde n) {
          return listeGardeService.joursFeries(n);
      }
 
-     @GetMapping("/typegarde/{n}")
-     public int nombredefoncgarde(@PathVariable String n) {
-         return listeGardeService.nombredefoncgarde(n);
+     @GetMapping("/typegarde/{n}/{matricule}")
+     public int nombredefoncgarde(@PathVariable String n,@PathVariable String matricule) {
+         return listeGardeService.nombredefoncgarde(n,matricule);
      }
-     @GetMapping("/statue/{n}")
-     public int nombredefoncstatue(@PathVariable String n) {
-         return listeGardeService.nombredefoncstatue(n);
+     @GetMapping("/statue/{n}/{matricule}")
+     public int nombredefoncstatue(@PathVariable String n,@PathVariable String matricule) {
+         return listeGardeService.nombredefoncstatue(n,matricule);
      }
 
      @PutMapping("/")

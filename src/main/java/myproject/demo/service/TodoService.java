@@ -1,6 +1,7 @@
 package myproject.demo.service;
 
 import myproject.demo.bean.Todo;
+import myproject.demo.bean.User;
 import myproject.demo.dao.TodoDao;
 import myproject.demo.service.facade.TodoServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,14 @@ import java.util.Optional;
 public class TodoService implements TodoServiceInterface {
     @Autowired
     private TodoDao todoDao;
+    @Autowired
+    private  UserService userService;
     public int save(Todo todo) {
-
+        User user=userService.findByMatricule(todo.getUser().getMatricule());
         if (todo.getTitle() == null)
             return -1;
         else
+            todo.setUser(user);
             todo.setCompleted(false);
 
         todoDao.save(todo);
@@ -34,8 +38,8 @@ public class TodoService implements TodoServiceInterface {
         return todoDao.save(todo);
     }
 
-    public List<Todo> getAllTodos() {
-        return todoDao.getAllTodos();
+    public List<Todo> findAllBy(String matricule) {
+        return todoDao.findAllBy(matricule);
     }
 
     public void deleteById(Long id) {

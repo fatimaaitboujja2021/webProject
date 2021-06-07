@@ -1,9 +1,6 @@
 package myproject.demo.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -21,8 +18,19 @@ public class Todo {
     private Boolean completed = false;
 
     private Date createdAt = new Date();
+    @ManyToOne
+    private User user;
+
     public Todo() {
         super();
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Todo(String title) {

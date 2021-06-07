@@ -18,11 +18,10 @@ public class TodoWs {
 
     @Autowired
     TodoService todoService;
+    @GetMapping(value="/todoss/{matricule}")
+    public List<Todo> findAllBy(@PathVariable(value="matricule") String matricule) {
 
-    @GetMapping("/todos")
-    public List<Todo> getAllTodos() {
-
-        return todoService.getAllTodos();
+        return todoService.findAllBy(matricule);
     }
 
     @PostMapping("/todos")
@@ -31,20 +30,20 @@ public class TodoWs {
     }
 
     @GetMapping(value="/todos/{id}")
-    public Optional<Todo> getTodoById(@PathVariable("id") Long id) {
+    public Optional<Todo> getTodoById(@PathVariable Long id) {
         return todoService.findById(id);
 
     }
 
     @PutMapping(value="/todos/{id}")
-    public Todo updateTodo(@PathVariable("id") Long id,
+    public Todo updateTodo(@PathVariable Long id,
                                            @Valid @RequestBody Todo todo) {
         return todoService.update(id,todo);
 
     }
 
     @DeleteMapping(value="/todos/{id}")
-    public void deleteTodo(@PathVariable("id") Long id) {
+    public void deleteTodo(@PathVariable Long id) {
         todoService.deleteById(id);
     }
 }

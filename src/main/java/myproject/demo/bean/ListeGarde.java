@@ -8,14 +8,41 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 @Entity
-
 public class ListeGarde {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String ref;
-private double dureDeGarde;
+    private double dureDeGarde;
+    private LocalDate dateGarde ;
+    private String jourounuit;
+    private String statue;
+    private String raisondabsence;
+    private String monthString;
+
+    @Column(name = "nbrjoursferies", nullable = false)
+    private double nbrjf;
+
+    @Column(name = "trimestre", nullable = false)
+    private int trimestre;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Fonctionnaire fonctionnaire;
+
+    @ManyToOne
+    private  LaGarde garde;
+
+    @ManyToOne
+    private  IndemniteGarde indemniteGarde;
+
+    @ManyToOne
+    private  IndemniteAstreinte indemniteAstreinte;
+
+
+    //setters and getters
+
 
     public String getRaisondabsence() {
         return raisondabsence;
@@ -24,28 +51,6 @@ private double dureDeGarde;
     public void setRaisondabsence(String raisondabsence) {
         this.raisondabsence = raisondabsence;
     }
-
-
-    private LocalDate dateGarde ;
-    private String jourounuit;
-    private String statue;
-    private String raisondabsence;
-    @Column(name = "nbrjoursferies", nullable = false)
-
-    private double nbrjf;
-    @Column(name = "trimestre", nullable = false)
-
-    private int trimestre;
-    private String monthString;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Fonctionnaire fonctionnaire;
-    @ManyToOne
-    private  LaGarde garde;
-
-    @ManyToOne
-    private  IndemniteGarde indemniteGarde;
-    @ManyToOne
-    private  IndemniteAstreinte indemniteAstreinte;
 
 
     public IndemniteGarde getIndemniteGarde() {
