@@ -42,10 +42,10 @@ public class IndemniteGardeWs {
         return indemniteGardeService.findByYearTrim(n, t);
     }
 
-    @GetMapping("/calcul/{nom}/{prenom}/{year}/{montant}/{typedegarde}")
+    @GetMapping("/calcul/{nom}/{prenom}/{year}/{typedegarde}")
 
-    public List<IndemniteGarde> calculDindemnite(@PathVariable String nom,@PathVariable String prenom,@PathVariable int year,@PathVariable float montant,@PathVariable String typedegarde) {
-        return indemniteGardeService.calculDindemnite(nom, prenom, year,montant,typedegarde);
+    public List<IndemniteGarde> calculDindemnite(@PathVariable String nom,@PathVariable String prenom,@PathVariable int year,@PathVariable String typedegarde) {
+        return indemniteGardeService.calculDindemnite(nom, prenom, year,typedegarde);
     }
 
     @GetMapping("/calculAll/{matricule}/{year}")

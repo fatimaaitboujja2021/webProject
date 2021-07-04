@@ -13,20 +13,31 @@ public class Specialite {
     private Long id;
     public String intitule ;
     private String ref;
-    @Column(name = "montant", nullable = false)
+    @Column(name = "montantDeGarde")
 
-    private float montant;
+    private float montantgarde;
+    @Column(name = "montantDastreinte")
+
+    private float montantDastreinte;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "specialite")
     private List<Fonctionnaire> fonctionnaire;
 
 
-    public float getMontant() {
-        return montant;
+    public float getMontantgarde() {
+        return montantgarde;
     }
 
-    public void setMontant(float montant) {
-        this.montant = montant;
+    public void setMontantgarde(float montantgarde) {
+        this.montantgarde = montantgarde;
+    }
+
+    public float getMontantDastreinte() {
+        return montantDastreinte;
+    }
+
+    public void setMontantDastreinte(float montantDastreinte) {
+        this.montantDastreinte = montantDastreinte;
     }
 
     public Long getId() {

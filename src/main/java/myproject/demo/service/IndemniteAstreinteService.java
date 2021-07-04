@@ -67,16 +67,18 @@ public class IndemniteAstreinteService {
 
         List<ListeGarde> listeGardes =listeGardeService.findAll();
         List<Fonctionnaire> fonctionnaires=fonctionnaireService.findBymatriculeSuperieur(matricule);
-        for(ListeGarde l :listeGardes){
+        if(listeGardes!=null) {
+
+            for(ListeGarde l :listeGardes){
             for(Fonctionnaire f:fonctionnaires){
                 if (l.getFonctionnaire().getNom().equals(f.getNom()) && l.getFonctionnaire().getPrenom().equals(f.getPrenom())){
-                    indemniteAstreintes= calculDindemnite(f.getNom(),f.getPrenom(),year,f.getSpecialite().getMontant(),"astreinte");
+                    indemniteAstreintes= calculDindemnite(f.getNom(),f.getPrenom(),year,"astreinte");
 
                 }
             }
             indemniteAstreintes1.addAll(indemniteAstreintes);
 
-        }
+        }}
         x=indemniteAstreintes1.size();
         return x;
     }
@@ -124,7 +126,7 @@ public class IndemniteAstreinteService {
         return indemniteAstreinteDao.findBySub(t, p, n);
     }
 
-    public List<IndemniteAstreinte> calculDindemnite(String nom, String prenom, int year, float montant, String typedegarde){
+    public List<IndemniteAstreinte> calculDindemnite(String nom, String prenom, int year, String typedegarde){
         int nbrjoursouvrable=0;
         int  nbrjoursFeries=0;
         float nbrhreg=0;
@@ -141,7 +143,10 @@ public class IndemniteAstreinteService {
         float rlqta;
         float x = 0;
         String ref;
+        float montant;
+
         List<IndemniteAstreinte>  indemniteAstreintes = new ArrayList<>();
+        montant=fonctionnaireService.montantDastreinte(nom,prenom);
 
         for(int  i=1;i<=4;i++){
             List<Integer> num=listeGardeService.trouvertrim(year,typedegarde);
@@ -152,6 +157,7 @@ public class IndemniteAstreinteService {
                     if(listeGardes!=null) {
 
                         for (ListeGarde a : listeGardes) {
+                            if(a.getStatue().equals("present(e)")){
 
 
                             ref = "trim" + String.valueOf(k) + "annee " + String.valueOf(year)+" "+a.getFonctionnaire().getNom()+""+a.getFonctionnaire().getPrenom();
@@ -240,7 +246,7 @@ public class IndemniteAstreinteService {
                             a.setIndemniteAstreinte(indemniteAstreinte);
                             listeGardeService.save(a);
 
-                        }
+                        }}
                     }
 
                 }}

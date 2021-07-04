@@ -36,10 +36,10 @@ private FonctionnaireService fonctionnaireService;
     public int deleteByReference(@PathVariable String reference) {
         return fonctionnaireService.deleteByRef(reference);
     }
-    @GetMapping("/r")
-    public int nombredefonc() {
-        return fonctionnaireService.nombredefonc();
-    }
+//    @GetMapping("/r")
+//    public int nombredefonc() {
+//        return fonctionnaireService.nombredefonc();
+//    }
 
     @GetMapping("/ref/{ref}")
     public Fonctionnaire findByRef(@PathVariable String ref){
@@ -73,14 +73,19 @@ private FonctionnaireService fonctionnaireService;
     public List<Fonctionnaire> findBySpecialiteIntitule(@PathVariable String intitule){
         return  fonctionnaireService.findBySpecialiteIntitule(intitule);
     }
-    @GetMapping("/validiterGarde/{validiterGarde}")
-    public List<Fonctionnaire> findByvaliditerGarde(@PathVariable boolean validiterGarde){
-        return fonctionnaireService.findByvaliditerGarde(validiterGarde);
-    }
+
     @DeleteMapping("/matricule/{matricule}")
 
     public int deleteBymatriculeSub(@PathVariable String matricule){
         return fonctionnaireService.deleteBymatriculeSub(matricule);
     }
 
+    @GetMapping("/montantdegarde/{nom}/{prenom}")
+    public Float montantdegarde(@PathVariable String nom,@PathVariable String prenom) {
+        return fonctionnaireService.montantdegarde(nom, prenom);
+    }
+    @GetMapping("/montantDastreinte/{nom}/{prenom}")
+    public Float montantDastreinte(@PathVariable String nom,@PathVariable String prenom) {
+        return fonctionnaireService.montantDastreinte(nom, prenom);
+    }
 }

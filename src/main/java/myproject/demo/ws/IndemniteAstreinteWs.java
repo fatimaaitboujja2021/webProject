@@ -63,10 +63,10 @@ public class IndemniteAstreinteWs {
         return indemniteAstreinteService.findBynomprenom(n, p);
     }
 
-    @GetMapping("/calcule/{nom}/{prenom}/{year}/{montant}/{typedegarde}")
+    @GetMapping("/calcule/{nom}/{prenom}/{year}/{typedegarde}")
 
-    public List<IndemniteAstreinte> calculDindemnite(@PathVariable String nom, @PathVariable String prenom, @PathVariable int year, @PathVariable float montant, @PathVariable String typedegarde) {
-        return indemniteAstreinteService.calculDindemnite(nom, prenom, year,montant,typedegarde);
+    public List<IndemniteAstreinte> calculDindemnite(@PathVariable String nom, @PathVariable String prenom, @PathVariable int year, @PathVariable String typedegarde) {
+        return indemniteAstreinteService.calculDindemnite(nom, prenom, year,typedegarde);
     }
 
     @PostMapping("/")

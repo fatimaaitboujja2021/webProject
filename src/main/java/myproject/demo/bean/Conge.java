@@ -32,15 +32,14 @@ public class Conge {
         this.ref = ref;
     }
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "conge")
-    private List<Fonctionnaire> fonctionnaire;
+    @OneToOne
+    private Fonctionnaire fonctionnaire;
 
-    public List<Fonctionnaire> getFonctionnaire() {
+    public Fonctionnaire getFonctionnaire() {
         return fonctionnaire;
     }
 
-    public void setFonctionnaire(List<Fonctionnaire> fonctionnaire) {
+    public void setFonctionnaire(Fonctionnaire fonctionnaire) {
         this.fonctionnaire = fonctionnaire;
     }
 

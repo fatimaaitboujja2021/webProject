@@ -28,7 +28,7 @@ public class ListeGarde {
     @Column(name = "trimestre", nullable = false)
     private int trimestre;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Fonctionnaire fonctionnaire;
 
     @ManyToOne

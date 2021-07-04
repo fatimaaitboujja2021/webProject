@@ -22,6 +22,8 @@ public class ListeGardeService implements ListeGardeServiceInterface {
     @Autowired
     private ListeGardeDao listeGardeDao;
     @Autowired
+    private CongeService congeService;
+    @Autowired
     private FonctionnaireService fonctionnaireService;
     @Autowired
     private LaGardeService laGardeService;
@@ -80,7 +82,6 @@ public class ListeGardeService implements ListeGardeServiceInterface {
 
     public int save(ListeGarde listeGarde) {
         Fonctionnaire fonctionnaire = fonctionnaireService.findByNomAndPrenom(listeGarde.getFonctionnaire().getNom(), listeGarde.getFonctionnaire().getPrenom());
-        //LaGarde laGarde=laGardeService.findByTypeGarde(listeGarde.getGarde().getRef());
         LaGarde laGarde = laGardeService.findByTypeGarde(listeGarde.getGarde().getTypeGarde());
         ListeGarde l = findByRef(listeGarde.getRef());
         if (l != null) {
@@ -109,6 +110,14 @@ public class ListeGardeService implements ListeGardeServiceInterface {
 
     @Transactional
     public int deleteByRef(String refdeListe) {
+//IndemniteGarde d= indemniteGardeService.findByListeGardes_Ref(refdeListe);
+////Conge c=congeService.de
+//if(d!=null){
+//    Fonctionnaire f=new Fonctionnaire();
+//    d.setFonctionnaire(f);
+//}
+//
+//indemniteGardeService.deleteByListeGardes_Ref(refdeListe);
 
         return listeGardeDao.deleteByRef(refdeListe);
     }
@@ -147,14 +156,14 @@ public class ListeGardeService implements ListeGardeServiceInterface {
             listeGarde.setMonthString(x);
         }
 
-        if (listeGarde.getGarde().getTypeGarde().equals("garde")) {
+         if (listeGarde.getGarde().getTypeGarde().equals("garde")) {
 
             IndemniteGarde indemniteGarde = indemniteGardeService.findByRef(listeGarde.getIndemniteGarde().getRef());
-            indemniteGardeService.calculDindemnite(listeGarde.getFonctionnaire().getNom(), listeGarde.getFonctionnaire().getPrenom(), listeGarde.getDateGarde().getYear(), indemniteGarde.getMontantdindemniteparunite(), "garde");
+            indemniteGardeService.calculDindemnite(listeGarde.getFonctionnaire().getNom(), listeGarde.getFonctionnaire().getPrenom(), listeGarde.getDateGarde().getYear(), "garde");
 
         } else {
             IndemniteAstreinte indemniteAstreinte = indemniteAstreinteService.findByRef(listeGarde.getIndemniteAstreinte().getRef());
-            indemniteAstreinteService.calculDindemnite(listeGarde.getFonctionnaire().getNom(), listeGarde.getFonctionnaire().getPrenom(), listeGarde.getDateGarde().getYear(), indemniteAstreinte.getMontantdindemniteparunite(), "astreinte");
+            indemniteAstreinteService.calculDindemnite(listeGarde.getFonctionnaire().getNom(), listeGarde.getFonctionnaire().getPrenom(), listeGarde.getDateGarde().getYear(), "astreinte");
 
         }
 
@@ -166,6 +175,11 @@ public class ListeGardeService implements ListeGardeServiceInterface {
     public ListeGarde update2(ListeGarde listeGarde) {
         if (listeGarde.getStatue() == "present(e)")
             listeGarde.setRaisondabsence("_");
+//        String x = joursFeries(listeGarde);
+        if (listeGarde.getStatue() == "absent(e)"){
+            listeGarde.setRaisondabsence(listeGarde.getRaisondabsence());
+
+        }
         String x = joursFeries(listeGarde);
         if (joursFeries(listeGarde) == null) {
             listeGarde.setMonthString("jour ouvrable");
@@ -176,6 +190,7 @@ public class ListeGardeService implements ListeGardeServiceInterface {
 
         return listeGardeDao.save(listeGarde);
     }
+
 
 
     public int nombredefonc(String n,String matricule) {

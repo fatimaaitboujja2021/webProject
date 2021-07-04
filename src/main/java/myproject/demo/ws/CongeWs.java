@@ -1,6 +1,7 @@
 package myproject.demo.ws;
 
 import myproject.demo.bean.Conge;
+import myproject.demo.bean.Fonctionnaire;
 import myproject.demo.dao.CongeDao;
 import myproject.demo.service.CongeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/CHU/congews")
+@RequestMapping("/Chu/congews")
 public class CongeWs {
     @Autowired
     private CongeService congeService;
@@ -25,6 +26,17 @@ public class CongeWs {
         return congeService.findBytypeConge(type);
 
     }
+    @GetMapping("/fonctionnaireconge")
+
+    public List<Conge> fonctionnaireconge() {
+        return congeService.fonctionnaireconge();
+    }
+
+    @GetMapping("/count/{m}")
+    public int nombredefonc(@PathVariable String m) {
+        return congeService.nombredefonc(m);
+    }
+
     @GetMapping("/dbf/{dateDebutConge}/{dateFinConge}")
     public   List<Conge> findByDateDebutCongeAndDateFinConge(@PathVariable Date dateDebutConge,@PathVariable Date dateFinConge){
         return congeService.findByDateDebutCongeAndDateFinConge(dateDebutConge,dateFinConge);

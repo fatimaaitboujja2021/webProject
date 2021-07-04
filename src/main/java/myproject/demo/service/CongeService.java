@@ -1,8 +1,10 @@
 package myproject.demo.service;
 
 import myproject.demo.bean.Conge;
+import myproject.demo.bean.Fonctionnaire;
 import myproject.demo.dao.CongeDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +25,16 @@ public class CongeService {
             congeDao.save(conge);
         return 1;
     }
-   public List<Conge> findBytypeConge(String type){
+
+    public List<Conge> fonctionnaireconge() {
+        return congeDao.fonctionnaireconge();
+    }
+
+    public int nombredefonc(String m) {
+        return congeDao.nombredefonc(m);
+    }
+
+    public List<Conge> findBytypeConge(String type){
         return congeDao.findBytypeConge(type);
 
     }

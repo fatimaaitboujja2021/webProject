@@ -27,7 +27,7 @@ public class IndemniteGarde{
     private float Impot=0  ;
     private float Mnt_Net=0  ;
     private float Rlqt_A_reported=0  ;
-    private float Montantdindemniteparunite=386;
+    private float Montantdindemniteparunite;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany
     private List<ListeGarde> listeGardes;

@@ -25,9 +25,9 @@ List<IndemniteGarde> findBynomprenom(@Param("n") Object n, @Param("p") Object p)
 
 void deleteById(Long id);
 
-    @Query("SELECT c FROM IndemniteGarde c  order by SUBSTRING(c.ref, 10, 14) asc  ")
+    @Query("SELECT c FROM IndemniteGarde c  order by SUBSTRING(c.ref, 10, 14) asc , c.Trim")
     List<IndemniteGarde> findAll();
-    @Query("SELECT c FROM IndemniteGarde c  WHERE c.ref LIKE %:n%  order by SUBSTRING(c.ref, 10, 14) asc")
+    @Query("SELECT c FROM IndemniteGarde c  WHERE c.ref LIKE %:n%  order by SUBSTRING(c.ref, 10, 14) asc,c.Trim")
     List<IndemniteGarde> findByYear(@Param("n") int n);
 
     @Query("SELECT sum(c.Mnt_Net)  FROM IndemniteGarde c  WHERE SUBSTRING(c.ref, 10, 14) LIKE %:n% ")
@@ -43,7 +43,7 @@ int deleteByListeGardes_Ref(String ref);
     @Query("SELECT sum(c.Mnt_Net)  FROM IndemniteGarde c  WHERE c.fonctionnaire.nom LIKE :t and  c.fonctionnaire.prenom LIKE :p and SUBSTRING(c.ref, 10, 14) Like %:n%")
     Float findMontantnet(@Param("t") Object t,@Param("p") Object p,@Param("n") int n);
 
-
+IndemniteGarde findByListeGardes_Ref(String ref);
 
 
 

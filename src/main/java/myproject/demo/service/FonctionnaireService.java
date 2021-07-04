@@ -5,6 +5,7 @@ import myproject.demo.bean.*;
 import myproject.demo.dao.FonctionnaireDao;
 import myproject.demo.service.facade.FonctionnaireServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,36 +44,22 @@ public class FonctionnaireService implements FonctionnaireServiceInterface {
        // Conge conge = congeService.findByRef(fonctionnaire.getConge().getRef());
         Echelon echelon = echelonService.findByechelonnom(fonctionnaire.getEchelon().getEchelonnom());
         Fonction fonction = fonctionService.findByintitule(fonctionnaire.getFonction().getIntitule());
-       // ListeGarde listeGarde = listeGardeService.findByRef(fonctionnaire.getListeGarde());
         Specialite specialite = specialiteService.findByintitule(fonctionnaire.getSpecialite().getIntitule());
-     //Nservices services = nservicesService.findByIntitule(fonctionnaire.getNservices().getIntitule());
         Servhopital servhopital=servhopitalService.findByintitule(fonctionnaire.getServhopital().getIntitule());
     Grade grade = gradeService.findBygradenom(fonctionnaire.getGrade().getGradenom());
         User user = userService.findByMatricule(fonctionnaire.getMatriculeSuperieur());
         Comptebancaire comptebancaire = comptebancaireService.findBynCompte(fonctionnaire.getComptebancaire().getnCompte());
         if (findBymatriculeSub(fonctionnaire.getMatriculeSub()) != null)
             return -1;
-//        if(congeService.findByRef(fonctionnaire.getConge().getRef())==null){
-//            fonctionnaire.getConge().setRef();
-//        }
-//        if(conge==null) return -2;
-//        if(echelon==null) return -3;
-//        if(fonction==null) return -4;
-//        if(specialite==null) return -5;
-//        if(services==null) return -6;
-//        if(grade==null) return -7;
 
 
         else
             fonctionnaire.setServhopital(servhopital);
             fonctionnaire.setSpecialite(specialite);
-      //  fonctionnaire.setConge(conge);
         fonctionnaire.setEchelon(echelon);
         fonctionnaire.setFonction(fonction);
         fonctionnaire.setUser(user);
         fonctionnaire.setComptebancaire(comptebancaire);
-        //fonctionnaire.setListeGarde(listeGarde);
-        //fonctionnaire.setNservices(services);
         fonctionnaire.setGrade(grade);
         fonctionnaireDao.save(fonctionnaire);
         return 1;
@@ -99,9 +86,7 @@ public class FonctionnaireService implements FonctionnaireServiceInterface {
         return fonctionnaireDao.findBySpecialiteIntitule(intitule);
     }
 
-    public List<Fonctionnaire> findByvaliditerGarde(boolean validiterGarde) {
-        return fonctionnaireDao.findByvaliditerGarde(validiterGarde);
-    }
+
 
     public int deleteBymatriculeSub(String matricule) {
         return fonctionnaireDao.deleteBymatriculeSub(matricule);
@@ -118,9 +103,9 @@ public class FonctionnaireService implements FonctionnaireServiceInterface {
         return fonctionnaireDao.findBynom(d);
     };
 
-   public int nombredefonc(){
-       return fonctionnaireDao.nombredefonc();
-   };
+//   public int nombredefonc(){
+//       return fonctionnaireDao.nombredefonc();
+//   };
 
 
     public Fonctionnaire findByListeGarde_Ref(String ref) {
@@ -142,7 +127,11 @@ public class FonctionnaireService implements FonctionnaireServiceInterface {
         return res;
     }
 
+    public Float montantdegarde(String nom, String prenom) {
+        return fonctionnaireDao.montantdegarde(nom, prenom);
+    }
 
-
-
+    public Float montantDastreinte(String nom, String prenom) {
+        return fonctionnaireDao.montantDastreinte(nom, prenom);
+    }
 }

@@ -50,22 +50,14 @@ public class Fonctionnaire {
     private String direction;
     private String division;
     private LocalDate dateAffectation;
-    private boolean validiterGarde;
 
-//ajouter le compte bancaire
-    @ManyToOne
-    private Conge conge;
-    @ManyToOne
-    private chefservice chefService;
+
 @ManyToOne
 private  Servhopital servhopital;
 
 @ManyToOne
 private  Comptebancaire comptebancaire;
-//    @ManyToOne
-//private IndemniteAstreinte indemniteAstreinte;
-//    @ManyToOne
-//    private IndemniteGarde indemniteGarde;
+
     @ManyToOne
     private Specialite specialite;
     @ManyToOne
@@ -73,7 +65,7 @@ private  Comptebancaire comptebancaire;
 
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "fonctionnaire",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "fonctionnaire")
     private List<ListeGarde> listeGarde;
 //    @ManyToOne
 //    private Nservices nservices;
@@ -350,29 +342,9 @@ private  Comptebancaire comptebancaire;
         this.dateAffectation = dateAffectation;
     }
 
-    public boolean isValiditerGarde() {
-        return validiterGarde;
-    }
 
-    public void setValiditerGarde(boolean validiterGarde) {
-        this.validiterGarde = validiterGarde;
-    }
 
-    public Conge getConge() {
-        return conge;
-    }
 
-    public void setConge(Conge conge) {
-        this.conge = conge;
-    }
-
-    public chefservice getChefService() {
-        return chefService;
-    }
-
-    public void setChefService(chefservice chefService) {
-        this.chefService = chefService;
-    }
 
     public Servhopital getServhopital() {
         return servhopital;

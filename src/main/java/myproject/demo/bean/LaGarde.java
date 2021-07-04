@@ -17,7 +17,7 @@ public class LaGarde {
 
     private String intitule ;
     private String typeGarde ;
-    private int nbrHeursdeGarde ;
+    private float nbrHeursdeGarde ;
 
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -76,11 +76,11 @@ public class LaGarde {
         this.typeGarde = typeGarde;
     }
 
-    public int getNbrHeursdeGarde() {
+    public float getNbrHeursdeGarde() {
         return nbrHeursdeGarde;
     }
 
-    public void setNbrHeursdeGarde(int nbrHeursdeGarde) {
+    public void setNbrHeursdeGarde(float nbrHeursdeGarde) {
         this.nbrHeursdeGarde = nbrHeursdeGarde;
     }
 }

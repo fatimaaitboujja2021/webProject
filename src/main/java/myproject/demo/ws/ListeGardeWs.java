@@ -90,6 +90,12 @@ private ListeGardeService listeGardeService;
      public ListeGarde update(@RequestBody ListeGarde listeGarde) {
          return listeGardeService.update(listeGarde);
      }
+
+     @PutMapping("/update")
+     public ListeGarde update2(@RequestBody ListeGarde listeGarde) {
+         return listeGardeService.update2(listeGarde);
+     }
+
      @PostMapping("/delete-multiple-by-reference")
      public int deleteByReference(@RequestBody List<ListeGarde> listeGardes) {
          return listeGardeService.deleteByRef(listeGardes);
